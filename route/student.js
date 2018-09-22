@@ -27,21 +27,31 @@ let student = [
     //params is on the request object 
     //req is always object 
     
+    
   })
 
   router.post('/', (req, res, next) => {
-    res.send('something')
-    req.body()
+    //insert a new person in database 
+    // res.send(student)
+
+    const newStudent = req.body;
+    //req.body is the client-side submission form w/ just their info
+    students.push(newStudent)
+    res.send(student)
   })
 
   router.put('/:id', (req, res, next) => {
-    res.send('PUT request to homepage')
+    const updatedStudent = req.body
+    const updatedStudent = students. find(student => student.id === req.param.id)
+    res.send(students);
 
   })
-  //not exactly sure what .put method does 
+  //updating existing data 
 
   router.delete('/:id', (req, res, next) => {
-    req.body(student[id-1])
+    let deletedStudentId = +req.params.id;
+    students.filter(student => student.id != deletedStudentId);
+    res.send(students);
   })
 
   module.exports = router;
