@@ -3,8 +3,10 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
 
+
 // Routes
 const Student = require('./routes/student');
+const touch = require('./routes/touch')
 
 // Init App
 const app = express();
@@ -14,6 +16,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(morgan('dev'));
 app.use('/student', Student);
+app.use('/', touch);
 
 // Err-handling
 app.use(function(err, req, res, next) {
